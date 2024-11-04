@@ -1,0 +1,28 @@
+# Ignore Python cache and bytecode files
+__pycache__
+*.py[cod]
+*$py.class
+
+# Ignore the virtual environment
+venv/
+.env/
+jaknajtaniejvenv/
+
+# Ignore local files
+*.sqlite3
+*.log
+*.bak
+.DS_Store
+
+# Ignore git-related files
+.git
+.gitignore
+
+# Ignore development and editor files
+.vscode/
+.idea/
+
+# Ignore test and coverage data
+.coverage
+.pytest_cache/
+htmlcov/

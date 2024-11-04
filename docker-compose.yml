@@ -1,0 +1,75 @@
+services:
+
+  backend:
+    build: 
+      context: ./backend        
+      dockerfile: Dockerfile
+    ports:
+      - '8000:8000'
+    volumes:
+      - ./backend:/jaknajtaniej/backend
+    command: bash -c "python manage.py runserver 0.0.0.0:8000"
+    env_file:
+      - ./.env
+    depends_on:
+      - db
+      - redis
+    restart: always
+
+  frontend:
+    build: 
+      context: ./frontend
+      dockerfile: Dockerfile
+    ports:
+      - '3000:3000'
+    volumes:
+      - ./frontend:/jaknajtaniej/frontend
+    depends_on:
+      - backend
+    restart: always
+
+  db:
+    image: postgres:13
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB}
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    ports:
+      - '5432:5432'
+    restart: always
+
+  redis:
+    image: redis:6
+    ports:
+      - '6379:6379'
+    restart: always
+
+  celery:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    command: celery -A backend worker -l info
+    volumes:
+      - ./backend:/jaknajtaniej/backend
+    env_file:
+      - ./.env
+    depends_on:
+      - backend
+      - redis
+    restart: always
+
+  pgadmin:
+    image: dpage/pgadmin4
+    environment:
+      PGADMIN_DEFAULT_EMAIL: ${PGADMIN_DEFAULT_EMAIL}
+      PGADMIN_DEFAULT_PASSWORD: ${PGADMIN_DEFAULT_PASSWORD}
+    ports:
+      - '5050:80'  # maps pgAdmin's web interface to localhost:5050
+    depends_on:
+      - db
+    restart: always
+
+volumes:
+  postgres_data:

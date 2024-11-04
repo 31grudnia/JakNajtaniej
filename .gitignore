@@ -1,0 +1,68 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environment
+venv/
+.env/
+
+# Environment variables
+*.env
+
+# Django / Flask specific files
+*.log
+*.pot
+*.pyc
+*.pyo
+*.pyd
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints
+
+# macOS specific files
+.DS_Store
+
+# Logs and database files
+*.log
+*.sqlite3
+
+# Coverage reports
+htmlcov/
+.coverage
+.tox
+.cache
+coverage.xml
+*.cover
+
+# Pytest
+.pytest_cache/
+
+# IDEs and editors
+.vscode/
+.idea/
+
+# Distribution / packaging
+.Python
+build/
+develop-eggs/
+dist/
+eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# Docker-related files
+docker-compose.override.yml
+*.bak
+
+TODO.md
+jaknajtaniejvenv/
