@@ -35,3 +35,8 @@ class Product(models.Model):
 
     def __str__(self):
         return f"Product #{self.id} - {self.name}"
+    
+
+class DataPopulationLog(models.Model):
+    name = models.CharField(max_length=255, unique=True)
+    timestamp = models.DateTimeField(auto_now_add=True)
