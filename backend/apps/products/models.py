@@ -17,7 +17,7 @@ class ProductSubcategory(models.Model):
         verbose_name = 'Product Subcategory'
         verbose_name_plural = 'Product Subcategories'
 
-    name = models.CharField(max_length=45, unique=True)
+    name = models.CharField(max_length=45)
     category = models.ForeignKey(ProductCategory, on_delete=models.CASCADE, related_name='subcategories')
 
     def __str__(self):

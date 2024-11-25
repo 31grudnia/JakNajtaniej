@@ -12,6 +12,7 @@ def populate_initial_data(sender, **kwargs):
         return
 
     categories = [
+        {"name": "Others"},
         {"name": "Electronics"},
         {"name": "Books"},
         {"name": "Home Appliances"},
@@ -25,9 +26,18 @@ def populate_initial_data(sender, **kwargs):
         {"name": "Fiction", "category_name": "Books"},
         {"name": "Non-Fiction", "category_name": "Books"},
         {"name": "Kitchen Appliances", "category_name": "Home Appliances"},
+        {"name": "Bathroom Appliances", "category_name": "Home Appliances"},
         {"name": "Men's Wear", "category_name": "Clothing"},
         {"name": "Women's Wear", "category_name": "Clothing"},
         {"name": "Fitness Equipment", "category_name": "Sports Equipment"},
+        {"name": "Gym Equipment", "category_name": "Sports Equipment"},
+
+        {"name": "Others", "category_name": "Others"},
+        {"name": "Others", "category_name": "Electronics"},
+        {"name": "Others", "category_name": "Books"},
+        {"name": "Others", "category_name": "Home Appliances"},
+        {"name": "Others", "category_name": "Clothing"},
+        {"name": "Others", "category_name": "Sports Equipment"},
     ]
 
     for category_data in categories:
