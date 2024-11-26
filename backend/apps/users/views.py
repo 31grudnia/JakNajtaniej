@@ -1,5 +1,22 @@
 from rest_framework.response import Response
 from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
+from rest_framework.views import APIView
+from rest_framework.permissions import IsAuthenticated
+
+
+class UserLogoutAPI(APIView):
+
+    permission_classes = [IsAuthenticated]
+
+    def post(self, request):
+        try:
+            res = Response()
+            res.delete_cookie('access_token', path='/', samesite='None')
+            res.delete_cookie('refresh_token', path='/', samesite='None')
+            res.data = {'success': True}
+            return res
+        except:
+            return Response({'success': False})
 
 
 class CustomTokenObtaiPairView(TokenObtainPairView):
