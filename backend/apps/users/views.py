@@ -1,7 +1,22 @@
 from rest_framework.response import Response
 from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
 from rest_framework.views import APIView
-from rest_framework.permissions import IsAuthenticated
+from rest_framework.permissions import IsAuthenticated, AllowAny
+
+from .serializers import UserRegisterSerializer 
+
+
+class UserRegisterAPI(APIView):
+    
+    permission_classes = [AllowAny]
+    
+    def post(self, request, *args, **kwargs):
+
+        serializer = UserRegisterSerializer(data = request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data)
+        return Response(serializer.error)
 
 
 class UserLogoutAPI(APIView):
