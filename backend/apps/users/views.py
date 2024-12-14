@@ -36,7 +36,6 @@ class UserLogoutAPI(APIView):
 
 class CustomTokenObtaiPairView(TokenObtainPairView):
     def post(self, request, *args, **kwargs):
-        
         try:
             response = super().post(request, *args, **kwargs)
             tokens = response.data
@@ -73,7 +72,6 @@ class CustomTokenObtaiPairView(TokenObtainPairView):
 
 class CustomRefreshToken(TokenRefreshView):
     def post(self, request, *args, **kwargs):
-        
         try:
             refresh_token = request.COOKIES.get('refresh_token')
             request.data['refresh'] = refresh_token

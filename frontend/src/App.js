@@ -1,14 +1,25 @@
+import React, { useState } from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { Provider } from "./components/ui/provider";
+
+import Login from './routes/login';
+
 import './App.css';
+
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <p>
-          Hello World!
-        </p>
-      </header>
-    </div>
+    <Provider>
+      <Router>
+        <div className="App">
+          <Routes>
+            <Route path="/login" element={<Login />} />
+
+            <Route path="/" element={<h1>Welcome to jakNajtaniej</h1>} />
+          </Routes>
+        </div>
+      </Router>
+    </Provider>
   );
 }
 
